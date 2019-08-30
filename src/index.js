@@ -1,3 +1,5 @@
+import './styles.css';
+
 let focusedContainer, focusedEl;
 const velocity = 15; // set velocity > margins
 
@@ -24,13 +26,12 @@ const focusContainer = container => {
 
 const getEl = ({ x, y }) => {
   const elements = document.elementsFromPoint(x, y);
-  const container = elements.filter(el =>
-    el.classList.contains("container"),
-  )[0];
+  const containers = elements.filter(el => el.classList.contains("container"));
 
-  if (!container) {
+  if (containers.length === 0) {
     return;
   }
+  const container = containers[0];
 
   if (container.classList.contains("focused")) {
     const el = document.elementFromPoint(x, y);

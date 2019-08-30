@@ -1,11 +1,13 @@
 module.exports = {
-  plugins: [
-    require('autoprefixer'),
-    require("postcss-import"),
-    require("postcss-url"),
-    require("postcss-cssnext"),
-    // and if you want to compress
-    require('cssnano'),
-    require("postcss-browser-reporter")
-  ]
+  plugins: {
+    "postcss-import": {},
+    "postcss-preset-env": {
+      browsers: "last 2 versions",
+      stage: 3,
+      features: {
+        "nesting-rules": true
+      }
+    },
+    cssnano: {},
+  },
 };

@@ -1,3 +1,4 @@
+
 #root {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -6,17 +7,18 @@
 
 a {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 5px;
+  margin: 5px;
+  display: inline-flex;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
   flex: 1;
+
   a {
     display: block;
-    margin-bottom: 5px;
-    margin-right: 10px;
   }
 }
 
@@ -24,15 +26,12 @@ a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  div {
+  
+  .container {
     display: flex;
     flex-direction: row;
     flex: 1;
     margin-bottom: 5px;
-  }
-  a {
-    display: inline-block;
-    margin-right: 5px;
   }
 }
 
@@ -45,5 +44,3 @@ a {
     outline: 2px solid #334433;
   }
 }
-
-

@@ -1,37 +1,29 @@
 {
-  "name": "ui-poc",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development",
-    "start": "npm run build && webpack-dev-server"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.2.2",
+    "eslint-loader": "^3.0.0",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
     "postcss": "^7.0.17",
-    "postcss-browser-reporter": "^0.6.0",
-    "postcss-cssnext": "^3.1.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
-    "postcss-reporter": "^6.0.1",
-    "postcss-url": "^8.0.0",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "stylelint": "^10.1.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-md5-hash": "0.0.6",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "build": "webpack -p --config ./webpack.config.js --display-error-details",
+    "watch": "webpack -d --watch --config ./webpack.config.js --display-error-details",
+    "dev": "webpack --open --hot",
+    "start": "npm run build && webpack-dev-server"
   }
 }

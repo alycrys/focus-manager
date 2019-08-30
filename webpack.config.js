@@ -1,42 +1,27 @@
 const path = require("path");
-const nodeExternals = require("webpack-node-externals");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
+const loaders = require("./loaders");
+const plugins = require("./plugins");
+
 module.exports = {
-  entry: { main: "./src/index.js" },
+  entry: ["./src/index.js"],
+  module: {
+    rules: [loaders.CSSLoader, loaders.JSLoader, loaders.ESLintLoader],
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js",
+    filename: "[name].bundle.js",
   },
-  target: "node",
-  externals: [nodeExternals()],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      }]
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    stats: {
+      children: false, // Hide children information
+      maxModules: 0, // Set the maximum number of modules to be shown
+    },
+    port: 9000,
   },
-  loaders: [
-    {
-      test: /\.css$/,
-      loader: "style-loader!css-loader!postcss-loader"
-    }
-  ],
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "style.[contenthash].css",
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: "./src/index.html",
-      filename: "index.html",
-    }),
-    new WebpackMd5Hash(),
+    plugins.StyleLintPlugin,
+    plugins.MiniCssExtractPlugin,
+    plugins.HtmlPlugin,
   ],
 };
